@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   font-family: 'Inter', sans-serif;
+  margin: 30px;
+}
+.header-container {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
