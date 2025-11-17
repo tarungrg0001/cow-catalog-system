@@ -1,0 +1,88 @@
+{
+  "hash": "fb736544",
+  "configHash": "6babc8a3",
+  "lockfileHash": "a7cd2be6",
+  "browserHash": "6e8f9cda",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "b07b6dc9",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "f344d948",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "5bb43fb3",
+      "needsInterop": false
+    },
+    "@primeuix/themes/aura": {
+      "src": "../../../../../../node_modules/@primeuix/themes/dist/aura/index.mjs",
+      "file": "@primeuix_themes_aura.js",
+      "fileHash": "a6537e2e",
+      "needsInterop": false
+    },
+    "primeng/api": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-api.mjs",
+      "file": "primeng_api.js",
+      "fileHash": "3b0f0335",
+      "needsInterop": false
+    },
+    "primeng/button": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-button.mjs",
+      "file": "primeng_button.js",
+      "fileHash": "5f900c55",
+      "needsInterop": false
+    },
+    "primeng/config": {
+      "src": "../../../../../../node_modules/primeng/fesm2022/primeng-config.mjs",
+      "file": "primeng_config.js",
+      "fileHash": "2eb28a4b",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "c959de56",
+      "needsInterop": true
+    },
+    "@angular/platform-browser/animations/async": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/animations/async.mjs",
+      "file": "@angular_platform-browser_animations_async.js",
+      "fileHash": "a6b84e10",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "platform-browser_false-TTSG3JCP": {
+      "file": "platform-browser_false-TTSG3JCP.js"
+    },
+    "chunk-AN3NDOHM": {
+      "file": "chunk-AN3NDOHM.js"
+    },
+    "chunk-UV576XXR": {
+      "file": "chunk-UV576XXR.js"
+    },
+    "chunk-EW3DBXCE": {
+      "file": "chunk-EW3DBXCE.js"
+    },
+    "chunk-JOC2NKNE": {
+      "file": "chunk-JOC2NKNE.js"
+    },
+    "chunk-CH5FEF2I": {
+      "file": "chunk-CH5FEF2I.js"
+    },
+    "chunk-IVMTDUX7": {
+      "file": "chunk-IVMTDUX7.js"
+    },
+    "chunk-3OV72XIM": {
+      "file": "chunk-3OV72XIM.js"
+    }
+  }
+}
