@@ -5,8 +5,8 @@ import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { Cow } from '../data/cow.model';
-import { CowService } from '../data/cow.service';
 import { CowStore } from '../data/cow.store';
+import { ActionRenderer } from '../../../shared/action-renderer/action-renderer';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -32,7 +32,7 @@ export class CowList implements OnInit {
 
   private defineColumns() {
     this.colDefs = [
-      { field: 'id' },
+      { field: 'id', cellRenderer: ActionRenderer },
       { field: 'sex', filter: true },
       { field: 'pen', filter: true },
       { field: 'status' },

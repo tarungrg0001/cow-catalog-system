@@ -3,7 +3,6 @@ import { BehaviorSubject, take } from 'rxjs';
 import type { TextFilterModel } from 'ag-grid-community';
 
 import { Cow } from './cow.model';
-import { CowService } from './cow.service';
 
 @Injectable({ providedIn: 'root' })
 export class CowStore {
@@ -16,23 +15,12 @@ export class CowStore {
   private filterSubject = new BehaviorSubject<any>('');
   public filter$ = this.filterSubject.asObservable();
 
-  private _cowService = inject(CowService);
-
-  constructor() {
-    this._cowService
-      .getCows()
-      .pipe(take(1))
-      .subscribe({
-        next: (res: { cows: Cow[] }) => {
-          if (this.cowsSubject.value.length === 0) {
-            this.cowsSubject.next(res.cows);
-          }
-        },
-      });
-  }
-
   public setSearch(text: string) {
     this.searchSubject.next(text);
+  }
+
+  public loadCows(cows: Cow[]) {
+    this.cowsSubject.next(cows);
   }
 
   public setFilter(status: TextFilterModel) {
@@ -42,5 +30,9 @@ export class CowStore {
   public addCow(cow: Cow) {
     const cowList = this.cowsSubject.value;
     this.cowsSubject.next([...cowList, cow]);
+  }
+
+  public getCows() {
+    return this.cowsSubject.value;
   }
 }

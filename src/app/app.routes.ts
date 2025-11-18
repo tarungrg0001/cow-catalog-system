@@ -8,4 +8,5 @@ export const routes: Routes = [
     path: 'add-cow',
     component: CowDetail,
   },
+  { path: 'view-cow-detail/:id', component: CowDetail },
 ];

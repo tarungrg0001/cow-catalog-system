@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { FormlyFieldConfig, FormlyModule } from '@ngx-formly/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AbstractControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormlyFieldConfig, FormlyFormOptions, FormlyModule } from '@ngx-formly/core';
 import { ButtonModule } from 'primeng/button';
-import { CowStore } from '../data/cow.store';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+
+import { CowService } from '../data/cow.service';
 
 @Component({
   selector: 'app-cow-detail',
@@ -11,17 +12,31 @@ import { RouterLink } from '@angular/router';
   templateUrl: './cow-detail.html',
   styleUrl: './cow-detail.scss',
 })
-export class CowDetail {
-  form = new FormGroup({});
+export class CowDetail implements OnInit {
+  public form = new FormGroup({});
+  public model = { id: '', sex: '', pen: '', status: 'Active', weight: 0 };
+  public options: FormlyFormOptions = {
+    formState: {
+      disabled: false,
+    },
+  };
 
-  model = { id: '', sex: '', pen: '', status: 'Active', weight: 0 };
-  fields: FormlyFieldConfig[] = [
+  public fields: FormlyFieldConfig[] = [
     {
       key: 'id',
       type: 'input',
       props: {
         label: 'Ear tag',
         required: true,
+      },
+      expressions: {
+        'props.disabled': 'formState.disabled',
+      },
+      validators: {
+        duplicateId: {
+          expression: (c: AbstractControl) => !c.value || this._cowService.ifIdPresent(c.value),
+          message: (error: any) => `This id already exists`,
+        },
       },
     },
     {
@@ -35,6 +50,9 @@ export class CowDetail {
           { value: 'Female', label: 'Female' },
         ],
       },
+      expressions: {
+        'props.disabled': 'formState.disabled',
+      },
     },
     {
       key: 'pen',
@@ -42,6 +60,9 @@ export class CowDetail {
       props: {
         label: 'Ear pen',
         required: true,
+      },
+      expressions: {
+        'props.disabled': 'formState.disabled',
       },
     },
     {
@@ -57,6 +78,9 @@ export class CowDetail {
           { value: 'Deceased', label: 'Deceased' },
         ],
       },
+      expressions: {
+        'props.disabled': 'formState.disabled',
+      },
     },
     {
       key: 'weight',
@@ -67,12 +91,26 @@ export class CowDetail {
         label: 'Ear weight',
         required: false,
       },
+      expressions: {
+        'props.disabled': 'formState.disabled',
+      },
     },
   ];
 
-  private _cowStore = inject(CowStore);
+  public id: any;
+  private _cowService = inject(CowService);
+  private _activatedRoute = inject(ActivatedRoute);
 
-  onSubmit(model: any) {
-    this._cowStore.addCow(model);
+  public ngOnInit(): void {
+    this.id = this._activatedRoute.snapshot.params['id'];
+    if (this.id) {
+      this.options.formState.disabled = true;
+      const cow = this._cowService.getCow(this.id);
+      this.model = { ...cow, weight: cow.weight ? cow.weight : 0 };
+    }
+  }
+
+  public onSubmit(model: any) {
+    this._cowService.addCow({ ...model, lastEventDate: new Date() });
   }
 }
