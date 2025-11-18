@@ -6,7 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { Cow } from '../data/cow.model';
 import { CowStore } from '../data/cow.store';
-import { ActionRenderer } from '../../../shared/action-renderer/action-renderer';
+import { ActionRenderer } from '../../shared/action-renderer/action-renderer';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -19,6 +19,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 export class CowList implements OnInit {
   public cows!: Cow[];
   public colDefs!: ColDef[];
+  public searchedCow: string = '';
 
   private myGridApi!: GridApi;
   private _cowStore = inject(CowStore);
@@ -50,15 +51,12 @@ export class CowList implements OnInit {
     this.myGridApi = event.api;
     this.myGridApi.sizeColumnsToFit();
     this._cowStore.search$.subscribe((search: string) => {
-      if (search) {
-        this.applyQuickFilter(search);
-      }
+      this.searchedCow = search;
+      this.applyQuickFilter(search);
     });
 
     this._cowStore.filter$.subscribe((filter: TextFilterModel) => {
-      if (filter) {
-        this.applyColumnFilter(filter);
-      }
+      this.applyColumnFilter(filter);
     });
   }
 

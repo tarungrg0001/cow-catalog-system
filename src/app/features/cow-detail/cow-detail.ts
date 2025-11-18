@@ -111,6 +111,8 @@ export class CowDetail implements OnInit {
   }
 
   public onSubmit(model: any) {
-    this._cowService.addCow({ ...model, lastEventDate: new Date() });
+    if (this.form.valid) {
+      this._cowService.addCow({ ...model, lastEventDate: new Date() });
+    }
   }
 }

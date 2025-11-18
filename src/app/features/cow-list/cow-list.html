@@ -2,6 +2,7 @@
   <input
     pInputText
     class="search-input"
+    [value]="searchedCow"
     (keyup)="searchValue($event.target.value)"
     type="text"
     placeholder="Search id"
