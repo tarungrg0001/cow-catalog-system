@@ -16,6 +16,9 @@ body {
   align-items: center;
   label {
     width: 100px;
+    span {
+      color: red;
+    }
   }
 }
 
@@ -23,4 +26,8 @@ formly-field-primeng-radio {
   display: flex;
   flex-direction: row;
   gap: 10px;
+}
+
+formly-validation-message {
+  color: red;
 }
