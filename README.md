@@ -32,6 +32,7 @@ My Approach & Design Choices
    I kept the API responses very simple ({ cows: Cow[] }) to reduce boilerplate.
 
 Known Limitations / Future Improvements
+As I have never worked with Formly and NgPrime before.
 Formly alignment: still needs some spacing and layout polish.
 No real backend.
 Missing Unit tests.
