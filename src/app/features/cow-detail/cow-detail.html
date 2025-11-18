@@ -1,8 +1,12 @@
 <p-button routerLink="/" label="Back" />
 
-<form [formGroup]="form" (ngSubmit)="onSubmit(model)">
-  <formly-form [form]="form" [options]="options" [fields]="fields" [model]="model"></formly-form>
-  @if(!id){
-  <p-button [disabled]="form.invalid" type="submit" label="Submit" />
-  }
-</form>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit(model)">
+    <formly-form [form]="form" [options]="options" [fields]="fields" [model]="model"></formly-form>
+    @if(!id){
+    <div class="button">
+      <p-button [disabled]="form.invalid" type="submit" label="Submit" />
+    </div>
+    }
+  </form>
+</div>
