@@ -1,8 +1,16 @@
 <div class="content">
+  <input
+    pInputText
+    class="search-input"
+    (keyup)="searchValue($event.target.value)"
+    type="text"
+    placeholder="Search id"
+  />
   <ag-grid-angular
-    style="width: 100%; height: 100%"
+    style="width: 100%; height: 500px"
     [rowData]="cows"
     [columnDefs]="colDefs"
-    (gridReady)="onGridReay($event)"
+    (filterChanged)="onFilterChanged()"
+    (gridReady)="onGridReady($event)"
   />
 </div>
