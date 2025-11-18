@@ -21,13 +21,12 @@ export class CowList implements OnInit {
   public colDefs!: ColDef[];
 
   private myGridApi!: GridApi;
-  private _cowService = inject(CowService);
   private _cowStore = inject(CowStore);
 
   public ngOnInit(): void {
     this.defineColumns();
-    this._cowService.getCows().subscribe((cows: { cows: Cow[] }) => {
-      this.cows = cows.cows;
+    this._cowStore.cows$.subscribe((cows: Cow[]) => {
+      this.cows = cows;
     });
   }
 

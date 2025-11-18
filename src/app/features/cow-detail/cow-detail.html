@@ -1,0 +1,6 @@
+<p-button routerLink="../" label="Back" />
+
+<form [formGroup]="form" (ngSubmit)="onSubmit(model)">
+  <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+  <p-button [disabled]="form.invalid" type="submit" label="Submit" />
+</form>
