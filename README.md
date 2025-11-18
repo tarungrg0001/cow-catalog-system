@@ -1,3 +1,5 @@
+WebApp deployed on: https://cow-catalog-system.web.app/
+
 How to Install & Run Locally
 
 1. Clone the repo
